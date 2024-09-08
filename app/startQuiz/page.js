@@ -26,7 +26,7 @@ const page = () => {
                     <div className='h-svh flex flex-col gap-2 items-center
                     justify-center'>
                         <Image
-                        src=""
+                        src="/user.png"
                         alt='error'
                         width={180}
                         height={180}/>

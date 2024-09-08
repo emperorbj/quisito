@@ -6,13 +6,13 @@ import { useEffect } from "react";
 
 export default function Home() {
   const { quizToStartObject } = useGlobalContextProvider();
-  const { setSelectQuizStart } = quizToStartObject;
+  const { setSelectQuizToStart } = quizToStartObject;
 
   useEffect(()=>{
     // on the first render of the home page 
     // set the the SELECT-QUIZ-START VARIABLE to NULL
     // 
-    setSelectQuizStart(null)
+    setSelectQuizToStart(null)
   },[])
   return (
     <section>
