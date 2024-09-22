@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import QuizStartQuestions from '@/app/components/QuizStartQuestions';
 import QuizStartHeader from '@/app/components/QuizStartHeader';
@@ -7,6 +7,7 @@ import useGlobalContextProvider from '../ContextApi';
 import Image from 'next/image';
 
 const page = () => {
+    const [parentTimer, setParentTimer] = useState(10)
 
     const { allQuizzes,quizToStartObject } = useGlobalContextProvider();
     const { selectQuizToStart } = quizToStartObject;
@@ -18,6 +19,10 @@ const page = () => {
             router.push('/');
         }
     },[])
+
+    function onUpdateTime(currentTime) {
+        setParentTimer(currentTime);
+    }
     
     return (
         <div className='flex flex-col px-24 mt-[35px]'>
@@ -37,9 +42,9 @@ const page = () => {
             
             :(
             <>
-            <QuizStartHeader/>
+            <QuizStartHeader parentTimer={parentTimer}/>
             <div className='flex mt-10 items-center justify-center'>
-                <QuizStartQuestions/>
+                <QuizStartQuestions onUpdateTime={onUpdateTime}/>
             </div>
             </>
             )}
